@@ -59,9 +59,9 @@ const UserDetails = (props) => {
     const getDate=(date)=>{
         var dt = new Date(date);
 
-year  = dt.getFullYear();
-month = (dt.getMonth() + 1).toString().padStart(2, "0");
-day   = dt.getDate().toString().padStart(2, "0");
+let year  = dt.getFullYear();
+let month = (dt.getMonth() + 1).toString().padStart(2, "0");
+let day   = dt.getDate().toString().padStart(2, "0");
 
 console.log(year + '/' + month + '/' + day);
     }
