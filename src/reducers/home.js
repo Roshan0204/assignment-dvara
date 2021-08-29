@@ -6,12 +6,12 @@ export default (state = initialState.home, action) => {
     case ActionTypes.GOT_COUNT:
     return{
       ...state,
-      total:action.payload
+      total:action.payload[0]
     }
     case ActionTypes.GOT_COUNT:
     return{
       ...state,
-      userData:action.payload
+      userData:action.payload[0]
     }
     default:
       return state;

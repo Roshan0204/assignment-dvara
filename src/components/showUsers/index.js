@@ -154,7 +154,7 @@ const {total,userData}=props;
                 <FindUserContainer>
                     <Title level={3}>FIND USER DETAILS</Title>
                     <Container>
-                    <Info placeholder="Enter Mobile Number" />
+                    <Info placeholder="Enter Mobile Number" onChange={(e)=>setMobile(e.target.value)} />
                     <SearchButton onClick={searchHandler}>
                         <p>Search</p>
                     </SearchButton>
