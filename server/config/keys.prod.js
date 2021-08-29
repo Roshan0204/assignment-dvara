@@ -1,0 +1,8 @@
+module.exports = {
+  mongoURL: process.env.DATABASE_URL,
+  secretOrKey: process.env.SECRET_OR_KEY,
+  MYSQL_HOST: MYSQL_HOST,
+  MYSQL_USER: MYSQL_USER,
+  MYSQL_PASSWORD: MYSQL_PASSWORD,
+  MYSQL_DATABASE: MYSQL_DATABASE
+};
