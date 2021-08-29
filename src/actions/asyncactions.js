@@ -19,8 +19,8 @@ export const register = (data,cbFunc) => dispatch => {
   };
 
 
-  export const getCount= (data) => dispatch => {
-    makeAsyncRequest("get", `${AppConstants.baseURL}/action/count`)
+  export const getCount= () => dispatch => {
+    makeAsyncRequest("post", `${AppConstants.baseURL}/action/count`)
     .then(resp => {
         if(resp.data.code==200){
             message.success(resp.data.message,5);
@@ -35,7 +35,7 @@ export const register = (data,cbFunc) => dispatch => {
 
 
   export const getUserByMobile= (mobile) => dispatch => {
-    makeAsyncRequest("get", `${AppConstants.baseURL}/action/search?mobile=${mobile}`)
+    makeAsyncRequest("post", `${AppConstants.baseURL}/action/search?mobile=${mobile}`)
     .then(resp => {
         if(resp.data.code==200){
             message.success(resp.data.message,5);
