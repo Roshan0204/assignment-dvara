@@ -161,10 +161,11 @@ const HomePage =(props)=> {
     mobile:""})
   }
   const submitHandler=()=>{
-    let data={};
-    data.name=profileData.name;
-    data.mobile=profileData.mobile;
-    data.file=pictures;
+    let data=new FormData();
+    data.append("name",profileData.name)
+    data.append("mobile",profileData.mobile)
+    data.append("file",pictures)
+    // console.log(data);
     props.register(data,cbFunc)
   }
 
