@@ -4,13 +4,12 @@ import * as syncActions from "./syncactions";
 import AppConstants from "../constants/appConstants";
 import { Alert, message } from "antd";
 
-export const verifyNumber = (data) => dispatch => {
-    makeAsyncRequest("post", `${AppConstants.baseURL}/users/phone`, data)
+export const register = (data,cbFunc) => dispatch => {
+    makeAsyncRequest("post", `${AppConstants.baseURL}/action/register`, data)
       .then(resp => {
-          if(resp.data.success){
-              message.success(resp.data.message,5)
-              localStorage.setItem("token",resp.data.results.token)
-              dispatch(syncActions.saveVerification(resp.data.results,data.phoneNumber))
+          if(resp.data.code==200){
+              message.success(resp.data.message,5);
+              cbFunc();
           }
         // console.log(resp, "resp data");
       })
@@ -19,19 +18,32 @@ export const verifyNumber = (data) => dispatch => {
       });
   };
 
-  export const verifyOtp = (data, cbFunc) => dispatch => {
-    makeAsyncRequest("post", `${AppConstants.baseURL}/users/phone/verify`, data)
-      .then(resp => {
-          if(resp.data.success){
-              message.success(resp.data.message,5)
-              cbFunc(resp.data.results)
-              // dispatch(syncActions.saveVerification(resp.data.results,data.phoneNumber))
-          }else{
-            message.error(resp.data.message,5)
-          }
-        console.log(resp, "resp data");
-      })
-      .catch(err => {
-        console.log("Login failed");
-      });
-  };
+
+  export const getCount= (data) => dispatch => {
+    makeAsyncRequest("get", `${AppConstants.baseURL}/action/count`)
+    .then(resp => {
+        if(resp.data.code==200){
+            message.success(resp.data.message,5);
+            dispatch(syncActions.gotCount(resp.data.data))
+        }
+      // console.log(resp, "resp data");
+    })
+    .catch(err => {
+      console.log("Login failed");
+    });
+  }
+
+
+  export const getUserByMobile= (mobile) => dispatch => {
+    makeAsyncRequest("get", `${AppConstants.baseURL}/action/search?mobile=${mobile}`)
+    .then(resp => {
+        if(resp.data.code==200){
+            message.success(resp.data.message,5);
+            dispatch(syncActions.gotUser(resp.data.data))
+        }
+      // console.log(resp, "resp data");
+    })
+    .catch(err => {
+      console.log("Login failed");
+    });
+  }

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import styled from "styled-components";
 import {Typography} from "antd";
 import UserDetails from "./UserDetails";
@@ -128,25 +128,40 @@ width: 100%;
 border-top: 1px dashed #eee;
 `;
 
-const ShowUsers = () =>{
+const ShowUsers = (props) =>{
+
+    useEffect(() => {
+        props.getCount();
+      }, []);
+
+const [mobile,setMobile]=useState("");
+
+    const searchHandler=()=>{
+        props.getUserByMobile(mobile)
+    }
+
+
+const {total,userData}=props;
     return(
         <Wrapper>
             <InfoContainer>
                 <TotalContainer>
                     <TotalInfo>
                         <div>TOTAL USERS :</div>
-                        <span>12</span>
+                        <span>{total && total.count}</span>
                     </TotalInfo>
                 </TotalContainer>
                 <FindUserContainer>
                     <Title level={3}>FIND USER DETAILS</Title>
                     <Container>
                     <Info placeholder="Enter Mobile Number" />
-                    <SearchButton>
+                    <SearchButton onClick={searchHandler}>
                         <p>Search</p>
                     </SearchButton>
                 <UserDetailsContainer>
-                    <UserDetails />
+                    {userData &&
+                    <UserDetails user={userData} />
+}
                 </UserDetailsContainer>
                     </Container>
                 </FindUserContainer>

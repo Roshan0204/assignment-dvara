@@ -3,5 +3,5 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  baseURL: "https://hiring.getbasis.co/candidate"
+  baseURL: "https://backend-dvara.herokuapp.com/api"
 };

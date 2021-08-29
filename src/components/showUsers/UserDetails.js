@@ -54,24 +54,37 @@ margin-top: 50px;
 }
 `;
 
-const UserDetails = () => {
+const UserDetails = (props) => {
+
+    const getDate=(date)=>{
+        var dt = new Date(date);
+
+year  = dt.getFullYear();
+month = (dt.getMonth() + 1).toString().padStart(2, "0");
+day   = dt.getDate().toString().padStart(2, "0");
+
+console.log(year + '/' + month + '/' + day);
+    }
+    const {user}=props;
         return(
             <Wrapper>
                 <InfoContainer>
                     <Info>
                         <div>Name :</div>
-                        <span>Roshan Kumar</span>
+                        <span>{user.name}</span>
                     </Info>
                     <Info>
                         <div>Mobile Number :</div>
-                        <span>9876543210</span>
+                        <span>{user.mobile}</span>
                     </Info>
                     <Info>
                         <div>Date of Registeration :</div>
-                        <span>20/08/2021</span>
+                        <span>{getDate(user.date)}</span>
                     </Info>
                     <ImageWrapper>
-                    <ImageContainer></ImageContainer>
+                    <ImageContainer>
+                        <img src={user.profile} />
+                    </ImageContainer>
                     </ImageWrapper>
                 </InfoContainer>
             </Wrapper>

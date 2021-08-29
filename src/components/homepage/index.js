@@ -134,7 +134,7 @@ function getBase64(img, callback) {
 }
 
 
-const HomePage =()=> {
+const HomePage =(props)=> {
   const [profileData,setProfileData]=useState({
     name:"",
     mobile:""
@@ -156,6 +156,18 @@ const HomePage =()=> {
   }
   }
 
+  const cbFunc=()=>{
+    setProfileData({...profileData,name:"",
+    mobile:""})
+  }
+  const submitHandler=()=>{
+    let data={};
+    data.name=profileData.name;
+    data.mobile=profileData.mobile;
+    data.file=pictures;
+    props.register(data,cbFunc)
+  }
+
     return (
         <Wrapper>
           <Title level={3}>ADD USER DETAILS</Title>
@@ -168,7 +180,7 @@ const HomePage =()=> {
           </ShowButtonContainer>
           <InfoContainer>
             <ButtonContainer>
-          <SaveButton>
+          <SaveButton onClick={submitHandler}>
             <p>Submit</p>
           </SaveButton>
           </ButtonContainer>

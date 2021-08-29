@@ -1,13 +1,19 @@
 import { connect } from "react-redux";
 import ShowUsers from "../components/showUsers";
-import {} from "../actions/asyncactions";
+import {getCount,getUserByMobile} from "../actions/asyncactions";
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    total: state.home.total,
+    userData: state.home.userData
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    getCount:()=>dispatch(getCount()),
+    getUserByMobile:(mobile)=>dispatch(getUserByMobile(mobile))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowUsers);
