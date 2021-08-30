@@ -1,8 +1,7 @@
 import { makeAsyncRequest } from "../constants/request";
-import ActionTypes from "../constants/actionTypes";
 import * as syncActions from "./syncactions";
 import AppConstants from "../constants/appConstants";
-import { Alert, message } from "antd";
+import {message } from "antd";
 
 export const register = (data,cbFunc) => dispatch => {
     makeAsyncRequest("post", `${AppConstants.baseURL}/action/register`, data)
@@ -14,7 +13,7 @@ export const register = (data,cbFunc) => dispatch => {
         // console.log(resp, "resp data");
       })
       .catch(err => {
-        console.log("Login failed");
+        console.log(err);
       });
   };
 
@@ -29,7 +28,7 @@ export const register = (data,cbFunc) => dispatch => {
       // console.log(resp, "resp data");
     })
     .catch(err => {
-      console.log("Login failed");
+      console.log(err);
     });
   }
 
@@ -44,6 +43,6 @@ export const register = (data,cbFunc) => dispatch => {
       // console.log(resp, "resp data");
     })
     .catch(err => {
-      console.log("Login failed");
+      console.log(err);
     });
   }

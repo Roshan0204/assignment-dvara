@@ -76,10 +76,12 @@ const Header = () =>{
               }}
             >
               <LogoContainer>
+                <Link to="/">
                 <a>
                   <img src={Img.Logo} />
                   <p>Assignment</p>
                 </a>
+                </Link>
               </LogoContainer>
             </div>
           </Container>
