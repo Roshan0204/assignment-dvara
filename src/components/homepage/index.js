@@ -140,6 +140,7 @@ const HomePage =(props)=> {
     mobile:""
   })
   const [pictures, setImg] = useState([]);
+  const [visible,setVisible]=useState(true)
 
   const changeHandler = (e) => {
     setProfileData({ ...profileData, [e.target.name]: e.target.value });
@@ -149,7 +150,7 @@ const HomePage =(props)=> {
     try{
     await getBase64(picture[0], (image) => {
       // console.log("file", picture);
-      setImg(picture);
+      setImg(picture[0]);
     })
   }catch(e){
     console.log("error",e)
@@ -159,14 +160,15 @@ const HomePage =(props)=> {
   const cbFunc=()=>{
     setProfileData({...profileData,name:"",
     mobile:""})
+    setVisible(false)
   }
   const submitHandler=()=>{
-    let data=new FormData();
+    let data = new FormData();
     data.append("name",profileData.name)
     data.append("mobile",profileData.mobile)
     data.append("file",pictures)
-    // console.log(data);
-    props.register(data,cbFunc)
+    console.log(data);
+    props.register(data,cbFunc);
   }
 
     return (
@@ -185,8 +187,8 @@ const HomePage =(props)=> {
             <p>Submit</p>
           </SaveButton>
           </ButtonContainer>
-            <Info placeholder="Enter Name" name="name" onChange={changeHandler}/>
-            <Info placeholder="Enter Mobile Number" name="mobile" onChange={changeHandler} />
+            <Info placeholder="Enter Name" name="name" onChange={changeHandler} value={profileData.name}/>
+            <Info placeholder="Enter Mobile Number" name="mobile" onChange={changeHandler} value={profileData.mobile} />
           <ImageContainer>
             <ImageUploader
             withIcon={false}
@@ -194,7 +196,7 @@ const HomePage =(props)=> {
             buttonText="Upload Picture"
             onChange={imgData}
             singleImage={true}
-            withPreview={true}
+            withPreview={visible}
             imgExtension={[".jpg", ".png", ".jpeg", ".webp"]}
             />
           </ImageContainer>
