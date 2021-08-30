@@ -8,7 +8,7 @@ export default (state = initialState.home, action) => {
       ...state,
       total:action.payload[0]
     }
-    case ActionTypes.GOT_COUNT:
+    case ActionTypes.GOT_USER:
     return{
       ...state,
       userData:action.payload[0]

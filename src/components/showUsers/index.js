@@ -142,6 +142,7 @@ const [mobile,setMobile]=useState("");
 
 
 const {total,userData}=props;
+console.log(userData,"user")
     return(
         <Wrapper>
             <InfoContainer>

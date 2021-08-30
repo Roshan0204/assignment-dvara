@@ -63,9 +63,10 @@ let year  = dt.getFullYear();
 let month = (dt.getMonth() + 1).toString().padStart(2, "0");
 let day   = dt.getDate().toString().padStart(2, "0");
 
-console.log(year + '/' + month + '/' + day);
+return day + '/' + month + '/' + year;
     }
     const {user}=props;
+    console.log(user)
         return(
             <Wrapper>
                 <InfoContainer>
