@@ -38,18 +38,21 @@ const LogoContainer = styled.div`
   > a {
     display: flex;
     align-items: center;
+    >a{
+      display: flex;
     > img {
-      width: 80px;
+      width: 120px;
       margin-right: 10px;
     }
     > p {
-      font-size: 18px;
+      font-size: 35px;
       font-weight: bolder;
       text-transform: capitalize;
-      color: #000;
+      color: #fff;
       margin-bottom: 0px;
     }
   }
+}
 
   @media (max-width: ${props => props.theme.bpsm}) {
     > a {
